@@ -2,12 +2,20 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import colors from '../colors';
 import { AntDesign } from '@expo/vector-icons';
-
-const EntryItem = ({ entry, navigation }) => {
+import { Pressable } from 'react-native';
+const EntryItem = ({ entry, navigation, itemPressed }) => {
   const limit = 500;
   const isOverLimit = entry.calories > limit;
   return (
-    <View style={styles.itemContainer}>
+    <View>
+      <Pressable
+        style={({ pressed }) => {
+          // general style first, customized style after
+          return ([styles.itemContainer, pressed && styles.pressedStyle]);
+        }}
+        onPress={() => itemPressed(entry)}
+        android_ripple={{ color: "white", borderless: true }}>
+
 
       <View style={styles.description}>
         <Text style={[styles.descriptionText, isOverLimit && { color: 'orange' }]}>
@@ -19,8 +27,8 @@ const EntryItem = ({ entry, navigation }) => {
       </View>
 
       <Text style={[styles.calories]}>{entry.calories}</Text>
-
-    </View>
+    </Pressable>
+    </View >
   );
 };
 
@@ -56,7 +64,7 @@ const styles = StyleSheet.create({
   },
   pressedStyle: {
     borderRadius: 8,
-    backgroundColor: 'lightpink',
+    backgroundColor: colors.secondary,
     opacity: 0.5,
     marginBottom: 10,
     flexDirection: 'row',

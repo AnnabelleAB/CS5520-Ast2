@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import EntryItem from './EntryItem';
 import colors from '../colors';
-
+import { useNavigation } from '@react-navigation/native';
 const EntriesList = ({ type, navigation }) => {
   const [entries, setEntries] = useState([
     { id: "1", calories: "600", description: "banana" },
@@ -18,6 +18,9 @@ const EntriesList = ({ type, navigation }) => {
     filteredData = entries;
   }
 
+  const handlePress = (entry) => {
+    navigation.navigate('Edit Entry', { entry });
+  };
   return (
     <View style={styles.flatListContainer}>
       <FlatList
@@ -28,6 +31,7 @@ const EntriesList = ({ type, navigation }) => {
           <EntryItem
             entry={item}
             navigation={navigation}
+            itemPressed={() => handlePress(item)}
           />
         )}
       />
