@@ -32,8 +32,9 @@ const EntriesList = ({ type, navigation }) => {
   const overLimit = 500;
   const filteredEntries = entries.filter((entry) => entry.calories > overLimit);
   let filteredData = [];
+
   if (type === 'over-limit') {
-    filteredData = filteredEntries;
+    filteredData = filteredEntries.filter((entry) => !entry.isReviewed);
   } else {
     filteredData = entries;
   }
@@ -41,6 +42,7 @@ const EntriesList = ({ type, navigation }) => {
   const handlePress = (entry) => {
     navigation.navigate('Edit Entry', { entry });
   };
+
   return (
     <View style={styles.flatListContainer}>
       <FlatList

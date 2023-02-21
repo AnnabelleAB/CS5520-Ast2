@@ -2,23 +2,31 @@ import React, { useState } from 'react';
 import { View, TextInput, StyleSheet, Text } from 'react-native';
 import PressableButton from '../components/PressableButton';
 import colors from '../colors';
+import { collection, getFirestore, addDoc } from 'firebase/firestore';
 
 const AddEntry = ({ navigation }) => {
   const [calories, setCalories] = useState('');
   const [description, setDescription] = useState('');
   const [isValid, setIsValid] = useState(true);
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (!calories || !description || isNaN(calories)) {
       setIsValid(false);
       return;
     }
-
-    // Add the new entry to the database
-    // ...
-
+  
+    try {
+      const db = getFirestore();
+      const colRef = collection(db, 'Entries');
+      const newEntryRef = await addDoc(colRef, { calories, description });
+      console.log(`Entry added with ID: ${newEntryRef.id}`);
+    } catch (error) {
+      console.log(error.message);
+    }
+  
     navigation.goBack();
   };
+  
 
   const handleReset = () => {
     setCalories('');

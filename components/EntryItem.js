@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { Pressable } from 'react-native';
 const EntryItem = ({ entry, navigation, itemPressed }) => {
   const limit = 500;
-  const isOverLimit = entry.calories > limit;
+  const isOverLimit = entry.calories > limit && !entry.isReviewed;
   return (
     <View>
       <Pressable

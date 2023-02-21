@@ -19,7 +19,6 @@ const firebaseConfig = {
   measurementId: "G-VFB6D1V3TZ"
 };
 const app = initializeApp(firebaseConfig);
-
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
