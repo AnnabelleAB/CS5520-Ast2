@@ -7,9 +7,13 @@ import {
   collection,
   getFirestore,
   getDocs,
+  limit,
+  query, orderBy
+
 } from 'firebase/firestore';
 
 const EntriesList = ({ type, navigation }) => {
+  const PAGE_SIZE = 10;
   const db = getFirestore();
   const colRef = collection(db, 'Entries');
 
@@ -18,7 +22,8 @@ const EntriesList = ({ type, navigation }) => {
   useEffect(() => {
     const fetchEntries = async () => {
       try {
-        const querySnapshot = await getDocs(colRef);
+        const q = query(colRef, limit(PAGE_SIZE));
+        const querySnapshot = await getDocs(q);
         const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
         setEntries(data);
       } catch (error) {
