@@ -19,7 +19,6 @@ const AddEntry = ({ navigation }) => {
       const db = getFirestore();
       const colRef = collection(db, 'Entries');
       const newEntryRef = await addDoc(colRef, { calories, description });
-      console.log(`Entry added with ID: ${newEntryRef.id}`);
     } catch (error) {
       console.log(error.message);
     }

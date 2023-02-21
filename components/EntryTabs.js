@@ -9,7 +9,6 @@ import colors from '../colors';
 const Tab = createBottomTabNavigator();
 
 function iconPressed(navigation) {
-  console.log("navigation");
   navigation.navigate("Add Entry");
 }
 
@@ -37,7 +36,6 @@ const EntryTabs = ({ navigation }) => (
     return (
       <PressableButton
         buttonPressed={() => {
-          console.log("Hi");
           return (iconPressed(navigation));
         }}
       >
