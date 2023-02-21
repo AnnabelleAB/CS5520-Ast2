@@ -14,7 +14,7 @@ const EntryItem = ({ entry, navigation, itemPressed }) => {
           return ([styles.itemContainer, pressed && styles.pressedStyle]);
         }}
         onPress={() => itemPressed(entry)}
-        android_ripple={{ color: "white", borderless: true }}>
+        android_ripple={{ color: "white", borderless: false }}>
 
       <View style={styles.description}>
         <Text style={[styles.descriptionText, isOverLimit && { color: 'orange' }]}>
