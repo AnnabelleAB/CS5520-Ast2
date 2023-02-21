@@ -13,8 +13,7 @@ export default function PressableButton(props) {
 const styles = StyleSheet.create({
     pressableDefault: {
         backgroundColor: colors.buttonBackground,
-        borderRadius: 8,
-        opacity: 0.5,
+        borderRadius: 0.8,
         marginBottom: 10,
         flexDirection: "row",
         alignItems: "center",
@@ -27,6 +26,6 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "center"
+        justifyContent: "space-center",
     },
 })

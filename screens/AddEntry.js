@@ -68,15 +68,15 @@ const AddEntry = ({ navigation }) => {
       <View style={styles.buttonsContainer}>
         <PressableButton
           buttonPressed={handleReset}
-          style={[styles.button]}
+          customizedStyle={[styles.button]}
         >
-          <Text style={[styles.buttonText, { color: colors.gray }]}>Reset</Text>
+          <Text style={styles.buttonText}>Reset</Text>
         </PressableButton>
         <PressableButton
           buttonPressed={handleSubmit}
-          style={[styles.button]}
+          customizedStyle={[styles.button]}
         >
-          <Text style={[styles.buttonText, { color: colors.gray }]}>Submit</Text>
+          <Text style={styles.buttonText}>Submit</Text>
         </PressableButton>
       </View>
     </View>
@@ -123,12 +123,14 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: colors.buttonBackground,
     borderRadius: 5,
-    height: 80,
-    width: '100%',
+    height: 40,
+    width: 80,
     justifyContent: 'center',
     alignItems: 'center',
     margin: 8,
     padding: 10,
+      button: {
+  },
   },
   buttonText: {
     color: colors.white,

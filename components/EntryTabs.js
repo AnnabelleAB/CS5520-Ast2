@@ -13,7 +13,6 @@ function iconPressed(navigation) {
   navigation.navigate("Add Entry");
 }
 
-// const navigation = useNavigation();
 const EntryTabs = ({ navigation }) => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
