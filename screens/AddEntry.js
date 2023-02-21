@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, Alert } from 'react-native';
 import PressableButton from '../components/PressableButton';
 import colors from '../colors';
 import { collection, getFirestore, addDoc } from 'firebase/firestore';
@@ -11,10 +11,10 @@ const AddEntry = ({ navigation }) => {
 
   const handleSubmit = async () => {
     if (!calories || !description || isNaN(calories)) {
-      setIsValid(false);
+      Alert.alert('Invalid Input', 'Please enter a valid number and a description.', [{ text: 'OK' }]);
       return;
     }
-  
+
     try {
       const db = getFirestore();
       const colRef = collection(db, 'Entries');
@@ -22,7 +22,7 @@ const AddEntry = ({ navigation }) => {
     } catch (error) {
       console.log(error.message);
     }
-  
+
     navigation.goBack();
   };
   
