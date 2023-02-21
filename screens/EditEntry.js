@@ -15,26 +15,53 @@ export default function EditEntry({ navigation, route }) {
   const isOverLimit = calories > 500;
 
 
-  const handleDelete = async () => {
-    try {
-      await deleteDoc(doc(db, "Entries", route.params.entry.id));
-      navigation.goBack();
-    } catch (e) {
-      console.error("Error deleting document: ", e);
-    }
+  const handleDelete = () => {
+    Alert.alert(
+      "Delete Entry",
+      "Are you sure you want to delete this entry?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Delete canceled"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: async () => {
+          try {
+            await deleteDoc(doc(db, "Entries", route.params.entry.id));
+            navigation.goBack();
+          } catch (e) {
+            console.error("Error deleting document: ", e);
+          }
+        } }
+      ]
+    );
   };
   
-  const handleReview = async () => {
-    try {
-      const entryRef = doc(db, "Entries", route.params.entry.id);
-      await updateDoc(entryRef, {
-        isReviewed: true
-      });
-      navigation.goBack();
-    } catch (e) {
-      console.error("Error updating document: ", e);
-    }
+  const handleReview = () => {
+    Alert.alert(
+      "Review Entry",
+      "Are you sure you want to mark this entry as reviewed?",
+      [
+        {
+          text: "Cancel",
+          onPress: () => console.log("Review canceled"),
+          style: "cancel"
+        },
+        { text: "OK", onPress: async () => {
+          try {
+            const entryRef = doc(db, "Entries", route.params.entry.id);
+            await updateDoc(entryRef, {
+              isReviewed: true
+            });
+            navigation.goBack();
+          } catch (e) {
+            console.error("Error updating document: ", e);
+          }
+        } }
+      ]
+    );
   };
+
 
   return (
     <View style={styles.container}>
