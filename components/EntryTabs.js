@@ -26,20 +26,35 @@ const EntryTabs = ({ navigation }) => (
 
         return <MaterialIcons name={iconName} size={size} color={color} />;
       },
-      headerStyle: {
-        backgroundColor: colors.buttonBackground,
-      },
-      headerTintColor: colors.white,
-    })}
-    tabBarOptions={{
-      style: {
+      "tabBarActiveTintColor": colors.white,
+      "tabBarInactiveTintColor": colors.background,
+      tabBarStyle: {
+        display: 'flex',
         backgroundColor: colors.buttonBackground,
       },
       activeTintColor: colors.white,
-      inactiveTintColor: colors.gray,
-      activeBackgroundColor: colors.buttonBackground,
-      inactiveBackgroundColor: colors.buttonBackground,
-    }}
+      inactiveTintColor: colors.grey,
+
+
+      headerStyle: {
+        backgroundColor: colors.buttonBackground,
+      },
+
+      headerTintColor: colors.white,
+      headerRight: () => {
+        return (
+          <PressableButton
+            buttonPressed={() => {
+              return (iconPressed(navigation));
+            }}
+          >
+            <Ionicons name="add" size={24} color="black" />
+          </PressableButton>
+        );
+      }
+    })}
+
+
   >
     <Tab.Screen name="All Entries" component={AllEntries} />
     <Tab.Screen name="OverLimit Entries" component={OverLimitEntries} />
