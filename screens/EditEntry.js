@@ -10,9 +10,9 @@ import { deleteFromDB, updateInDB } from '../Firebase/firebaseHelper';
 import PressableButton from '../components/PressableButton';
 
 export default function EditEntry({ navigation, route }) {
- 
+  const limit = 500;
   const { calories, description } = route.params.entry;
-  const isOverLimit = calories > 500;
+  const isOverLimit = (calories > limit) && !route.params.entry.isReviewed;
 
 
   const handleDelete = () => {
