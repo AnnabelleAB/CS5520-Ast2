@@ -15,40 +15,36 @@ function iconPressed(navigation) {
 const EntryTabs = ({ navigation }) => (
   <Tab.Navigator
     screenOptions={({ route }) => ({
-  tabBarIcon: ({ focused, color, size }) => {
-    let iconName;
+      tabBarIcon: ({ focused, color, size }) => {
+        let iconName;
 
-    if (route.name === 'All Entries') {
-      iconName = 'emoji-food-beverage';
-    } else if (route.name === 'OverLimit Entries') {
-      iconName = 'priority-high';
-    }
+        if (route.name === 'All Entries') {
+          iconName = 'emoji-food-beverage';
+        } else if (route.name === 'OverLimit Entries') {
+          iconName = 'priority-high';
+        }
 
-    return <MaterialIcons name={iconName} size={size} color={color} />;
-  },
-  tabBarOptions: {
-    activeTintColor: colors.white,
-    inactiveTintColor: colors.gray,
-    activeBackgroundColor: colors.buttonBackground,
-    inactiveBackgroundColor: colors.buttonBackground,
-  },
-  headerRight: () => {
-    return (
-      <PressableButton
-        buttonPressed={() => {
-          return (iconPressed(navigation));
-        }}
-      >
-        <Ionicons name="add" size={24} color="black" />
-      </PressableButton>
-    );
-  }
-})}
-
+        return <MaterialIcons name={iconName} size={size} color={color} />;
+      },
+      headerStyle: {
+        backgroundColor: colors.buttonBackground,
+      },
+      headerTintColor: colors.white,
+    })}
+    tabBarOptions={{
+      style: {
+        backgroundColor: colors.buttonBackground,
+      },
+      activeTintColor: colors.white,
+      inactiveTintColor: colors.gray,
+      activeBackgroundColor: colors.buttonBackground,
+      inactiveBackgroundColor: colors.buttonBackground,
+    }}
   >
     <Tab.Screen name="All Entries" component={AllEntries} />
     <Tab.Screen name="OverLimit Entries" component={OverLimitEntries} />
   </Tab.Navigator>
 );
+
 
 export default EntryTabs;

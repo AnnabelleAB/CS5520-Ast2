@@ -5,12 +5,12 @@ import { AntDesign } from '@expo/vector-icons';
 import colors from '../colors';
 import { doc, deleteDoc, updateDoc } from 'firebase/firestore';
 import { collection, getFirestore } from 'firebase/firestore';
-
+import { deleteFromDB, updateInDB } from '../Firebase/firebaseHelper';
 
 import PressableButton from '../components/PressableButton';
 
 export default function EditEntry({ navigation, route }) {
-  const db = getFirestore();
+ 
   const { calories, description } = route.params.entry;
   const isOverLimit = calories > 500;
 
@@ -26,12 +26,7 @@ export default function EditEntry({ navigation, route }) {
           style: "cancel"
         },
         { text: "OK", onPress: async () => {
-          try {
-            await deleteDoc(doc(db, "Entries", route.params.entry.id));
-            navigation.goBack();
-          } catch (e) {
-            console.error("Error deleting document: ", e);
-          }
+          deleteFromDB(route.params.entry.id)
         } }
       ]
     );
@@ -47,16 +42,9 @@ export default function EditEntry({ navigation, route }) {
           onPress: () => console.log("Review canceled"),
           style: "cancel"
         },
-        { text: "OK", onPress: async () => {
-          try {
-            const entryRef = doc(db, "Entries", route.params.entry.id);
-            await updateDoc(entryRef, {
-              isReviewed: true
-            });
-            navigation.goBack();
-          } catch (e) {
-            console.error("Error updating document: ", e);
-          }
+        {
+          text: "OK", onPress: async () => {
+          updateInDB(route.params.entry.id, { isReviewed: true})
         } }
       ]
     );

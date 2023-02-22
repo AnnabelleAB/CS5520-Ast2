@@ -6,10 +6,7 @@ import EditEntry from './screens/EditEntry';
 import AddEntry from './screens/AddEntry';
 import EntryTabs from './components/EntryTabs';
 import colors from './colors';
-import { initializeApp } from "firebase/app";
-import firebaseConfig from './firebaseConfig';
 
-const app = initializeApp(firebaseConfig);
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 

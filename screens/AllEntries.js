@@ -5,9 +5,7 @@ import colors from '../colors';
 export default function AllEntries({ navigation }) {
     return (
         <View style={styles.container}>
-
             <EntriesList type="all" navigation={navigation} />
-
         </View>
     );
 }

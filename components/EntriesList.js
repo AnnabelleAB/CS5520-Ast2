@@ -2,37 +2,35 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 import EntryItem from './EntryItem';
 import colors from '../colors';
-import { useNavigation } from '@react-navigation/native';
+import { firestore } from '../Firebase/firebase-setup';
 import {
   collection,
   getFirestore,
-  getDocs,
-  limit,
-  query, orderBy
-
+  onSnapshot
 } from 'firebase/firestore';
 
 const EntriesList = ({ type, navigation }) => {
   const PAGE_SIZE = 10;
-  const db = getFirestore();
-  const colRef = collection(db, 'Entries');
+
 
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
-    const fetchEntries = async () => {
-      try {
-        const q = query(colRef, limit(PAGE_SIZE));
-        const querySnapshot = await getDocs(q);
-        const data = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        setEntries(data);
-      } catch (error) {
-        console.log(error.message);
+    // this is a listener
+    const unsubscribe = onSnapshot(collection(firestore, "entries"), (querySnapshot) => {
+      if (querySnapshot.empty) {
+        setEntries([]);
+      } else {
+        let entriesPushToDB = [];
+        querySnapshot.forEach((doc) => {
+          entriesPushToDB.push({ ...doc.data(), id: doc.id });
+        });
+        setEntries(entriesPushToDB);
       }
-    };
-
-    fetchEntries();
-  }, [colRef]);
+    });
+    // this is a cleanup function that will be called automatically when the component unmounted
+    return () => unsubscribe();
+  }, []);
 
   const overLimit = 500;
   const filteredEntries = entries.filter((entry) => entry.calories > overLimit);

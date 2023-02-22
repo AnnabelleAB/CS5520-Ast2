@@ -4,6 +4,7 @@ import PressableButton from '../components/PressableButton';
 import colors from '../colors';
 import { collection, getFirestore, addDoc } from 'firebase/firestore';
 
+import { writeToDB } from '../Firebase/firebaseHelper';
 const AddEntry = ({ navigation }) => {
   const [calories, setCalories] = useState('');
   const [description, setDescription] = useState('');
@@ -16,9 +17,7 @@ const AddEntry = ({ navigation }) => {
     }
 
     try {
-      const db = getFirestore();
-      const colRef = collection(db, 'Entries');
-      const newEntryRef = await addDoc(colRef, { calories, description });
+      writeToDB({ calories: calories, description: description });
     } catch (error) {
       console.log(error.message);
     }
