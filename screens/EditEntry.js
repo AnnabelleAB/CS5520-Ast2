@@ -26,10 +26,12 @@ export default function EditEntry({ navigation, route }) {
           style: "cancel"
         },
         { text: "OK", onPress: async () => {
-          deleteFromDB(route.params.entry.id)
+          deleteFromDB(route.params.entry.id);
+          navigation.goBack();
         } }
       ]
     );
+ 
   };
   
   const handleReview = () => {
@@ -44,7 +46,8 @@ export default function EditEntry({ navigation, route }) {
         },
         {
           text: "OK", onPress: async () => {
-          updateInDB(route.params.entry.id, { isReviewed: true})
+            updateInDB(route.params.entry.id, { isReviewed: true });
+            navigation.goBack();
         } }
       ]
     );

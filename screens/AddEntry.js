@@ -18,11 +18,12 @@ const AddEntry = ({ navigation }) => {
 
     try {
       writeToDB({ calories: calories, description: description });
+      
     } catch (error) {
       console.log(error.message);
     }
-
     navigation.goBack();
+
   };
   
 
