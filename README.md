@@ -1,16 +1,16 @@
-| Ratings                                                      |      |        |
-| ------------------------------------------------------------ | ---- | ------ |
-| The screens have consistent styles and show the required components |      | 10 pts |
-| GitHub repo has meaningful commits and pull requests is created correctly |      | 10 pts |
-| Firebase configuration is loaded from environment variables and not pushed into GitHub |      | 5 pts  |
-| A helper file is used to expose common styles (e.g. color values) |      | 5 pts  |
-| Nested navigation works properly and headers have correct headers and icons |      | 20 pts |
-| Correct and updated lists always show on All Entries and Over-limit Entries |      | 10 pts |
-| Pressing the checkmark button on Edit Entry screen updates the database and navigates the user correctly |      |        |
-| Adding a new entry updates database and navigates the user correctly |      | 10 pts |
-| Proper validation is done when adding a new entry            |      | 5 pts  |
-| All Pressable components should give visual feedback to the user on both iOS and Android platforms. |      | 5 pts  |
-| Pressing "Delete" button on Edit Entry screen updates the database and navigates the user correctly |      | 5 pts  |
-| Alerts shown to the user when deleting and editing entries   |      | 5 pts  |
-| Buttons are implemented using Pressable                      |      | 5 pts  |
-| Entry's details are shown correctly on the Edit Entry screen |      | 5 pts  |
+| Ratings                                                      |      |      |
+| ------------------------------------------------------------ | ---- | ---- |
+| The screens have consistent styles and show the required components | Done |      |
+| GitHub repo has meaningful commits and pull requests is created correctly | Done |      |
+| Firebase configuration is loaded from environment variables and not pushed into GitHub | Done |      |
+| A helper file is used to expose common styles (e.g. color values) | Done |      |
+| Nested navigation works properly and headers have correct headers and icons | Done |      |
+| Correct and updated lists always show on All Entries and Over-limit Entries | Done |      |
+| Pressing the checkmark button on Edit Entry screen updates the database and navigates the user correctly | Done |      |
+| Adding a new entry updates database and navigates the user correctly | Done |      |
+| Proper validation is done when adding a new entry            | Done |      |
+| All Pressable components should give visual feedback to the user on both iOS and Android platforms. | Done |      |
+| Pressing "Delete" button on Edit Entry screen updates the database and navigates the user correctly | Done |      |
+| Alerts shown to the user when deleting and editing entries   | Done |      |
+| Buttons are implemented using Pressable                      | Done |      |
+| Entry's details are shown correctly on the Edit Entry screen | Done |      |
