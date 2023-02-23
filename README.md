@@ -1,3 +1,7 @@
+
+
+https://user-images.githubusercontent.com/49429865/220987913-86fc2a1e-4c57-4e23-8bb6-34780d9d8141.MOV
+
 | Ratings                                                      |      |      |
 | ------------------------------------------------------------ | ---- | ---- |
 | The screens have consistent styles and show the required components | Done |      |
