@@ -39,7 +39,7 @@ const EntryTabs = ({ navigation }) => (
       headerStyle: {
         backgroundColor: colors.buttonBackground,
       },
-
+      headerTitleAlign:"center",
       headerTintColor: colors.white,
       headerRight: () => {
         return (

@@ -14,6 +14,7 @@ const headerOptions = {
   headerStyle: {
     backgroundColor: colors.buttonBackground,
   },
+  headerTitleAlign:"center",
   headerTintColor: colors.white,
 };
 
